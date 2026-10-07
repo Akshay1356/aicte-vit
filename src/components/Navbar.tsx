@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Cpu, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,21 +37,35 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo & Badges */}
-          <Link href="/" className="flex items-center gap-3.5 group">
-            <div className="w-10 h-10 rounded-lg bg-blue-700 flex items-center justify-center text-white font-bold shadow-sm group-hover:bg-blue-800 transition-colors">
-              <Cpu className="w-5 h-5 text-white" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/logos/aicte-logo.png"
+                alt="AICTE Logo"
+                width={40}
+                height={40}
+                className="w-9 h-9 object-contain"
+              />
+              <Image
+                src="/logos/vit-chennai-logo.jpg"
+                alt="VIT Chennai Logo"
+                width={85}
+                height={40}
+                className="h-8 w-auto object-contain mix-blend-multiply"
+              />
             </div>
+            <div className="h-7 w-[1px] bg-slate-200 hidden sm:block mx-0.5" />
             <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">
-                  VITC <span className="text-blue-700">IDEA LAB</span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">
+                  IDEA <span className="text-blue-700">LAB</span>
                 </span>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-blue-50 text-blue-800 border border-blue-200">
                   AICTE
                 </span>
               </div>
-              <span className="text-xs text-slate-500 hidden sm:block tracking-wide">
-                VIT Chennai Innovation & Prototyping Center
+              <span className="text-[11px] text-slate-500 hidden sm:block tracking-wide">
+                VIT Chennai Center
               </span>
             </div>
           </Link>

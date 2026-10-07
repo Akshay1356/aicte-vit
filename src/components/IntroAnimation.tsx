@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface IntroAnimationProps {
@@ -36,7 +37,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
 
     const timer = setTimeout(() => {
       handleComplete();
-    }, reducedMotion ? 1600 : 3150);
+    }, reducedMotion ? 1600 : 3300);
 
     return () => {
       clearTimeout(timer);
@@ -87,6 +88,52 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
           >
             <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
               
+              {/* Partner Logos: AICTE & VIT Chennai */}
+              <motion.div
+                initial={
+                  reducedMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, y: -12, scale: 0.95 }
+                }
+                animate={
+                  reducedMotion
+                    ? { opacity: 1 }
+                    : { opacity: 1, y: 0, scale: 1 }
+                }
+                transition={{
+                  duration: 0.6,
+                  delay: reducedMotion ? 0.1 : 0.15,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="flex items-center justify-center gap-6 sm:gap-10 mb-8"
+              >
+                {/* AICTE Logo */}
+                <div className="flex items-center justify-center">
+                  <Image
+                    src="/logos/aicte-logo.png"
+                    alt="AICTE Logo"
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-sm"
+                    priority
+                  />
+                </div>
+
+                <div className="h-10 w-[1.5px] bg-slate-200" />
+
+                {/* VIT Chennai Logo */}
+                <div className="flex items-center justify-center">
+                  <Image
+                    src="/logos/vit-chennai-logo.jpg"
+                    alt="VIT Chennai Logo"
+                    width={150}
+                    height={75}
+                    className="h-14 sm:h-16 w-auto object-contain drop-shadow-sm mix-blend-multiply"
+                    priority
+                  />
+                </div>
+              </motion.div>
+
               {/* PRIMARY TYPOGRAPHY: "AICTE × VITC" */}
               <div className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-5 md:gap-x-7 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-900">
                 
@@ -102,7 +149,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                               opacity: 0,
                               y: 18,
                               filter: "blur(8px)",
-                              letterSpacing: "0.15em"
+                              letterSpacing: "0.15em",
                             }
                       }
                       animate={
@@ -112,13 +159,13 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                               opacity: 1,
                               y: 0,
                               filter: "blur(0px)",
-                              letterSpacing: "0.02em"
+                              letterSpacing: "0.02em",
                             }
                       }
                       transition={{
                         duration: 0.65,
                         delay: reducedMotion ? 0.2 : 0.35 + index * 0.08,
-                        ease: [0.16, 1, 0.3, 1]
+                        ease: [0.16, 1, 0.3, 1],
                       }}
                       className="text-slate-950 inline-block"
                     >
@@ -136,7 +183,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                           opacity: 0,
                           scale: 0.6,
                           rotate: -20,
-                          filter: "blur(6px)"
+                          filter: "blur(6px)",
                         }
                   }
                   animate={
@@ -146,13 +193,13 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                           opacity: 1,
                           scale: 1,
                           rotate: 0,
-                          filter: "blur(0px)"
+                          filter: "blur(0px)",
                         }
                   }
                   transition={{
                     duration: 0.55,
                     delay: reducedMotion ? 0.35 : 0.85,
-                    ease: [0.34, 1.56, 0.64, 1]
+                    ease: [0.34, 1.56, 0.64, 1],
                   }}
                   className="text-blue-600 font-light select-none text-3xl sm:text-5xl md:text-6xl lg:text-7xl inline-block mx-0.5 sm:mx-1"
                 >
@@ -171,7 +218,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                               opacity: 0,
                               y: 18,
                               filter: "blur(8px)",
-                              letterSpacing: "0.15em"
+                              letterSpacing: "0.15em",
                             }
                       }
                       animate={
@@ -181,13 +228,13 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                               opacity: 1,
                               y: 0,
                               filter: "blur(0px)",
-                              letterSpacing: "0.02em"
+                              letterSpacing: "0.02em",
                             }
                       }
                       transition={{
                         duration: 0.65,
                         delay: reducedMotion ? 0.45 : 1.05 + index * 0.08,
-                        ease: [0.16, 1, 0.3, 1]
+                        ease: [0.16, 1, 0.3, 1],
                       }}
                       className="text-slate-950 inline-block"
                     >
@@ -204,7 +251,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                 transition={{
                   duration: 0.7,
                   delay: reducedMotion ? 0.5 : 1.45,
-                  ease: [0.22, 1, 0.36, 1]
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 className="w-24 sm:w-36 h-[2px] bg-blue-600/30 my-6 sm:my-8"
               />
@@ -226,7 +273,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                   transition={{
                     duration: 0.6,
                     delay: reducedMotion ? 0.6 : 1.6,
-                    ease: [0.16, 1, 0.3, 1]
+                    ease: [0.16, 1, 0.3, 1],
                   }}
                   className="text-base sm:text-xl md:text-2xl text-slate-700 font-normal tracking-wide font-sans"
                 >
@@ -248,7 +295,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                   transition={{
                     duration: 0.6,
                     delay: reducedMotion ? 0.7 : 1.8,
-                    ease: [0.16, 1, 0.3, 1]
+                    ease: [0.16, 1, 0.3, 1],
                   }}
                   className="text-base sm:text-xl md:text-2xl font-semibold tracking-wide text-blue-700"
                 >
