@@ -9,25 +9,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VITC IDEA Lab | AICTE × VITC Innovation & Prototyping Center",
+  title: "AICTE × VITC IDEA Lab | Vellore Institute of Technology Chennai",
   description:
-    "AICTE IDEA Lab at Vellore Institute of Technology Chennai - Where your dream projects turn into reality. State-of-the-art 3D printing, CNC machining, PCB prototyping, IoT, and robotics facilities.",
+    "Official portal for the AICTE IDEA Lab at Vellore Institute of Technology Chennai. State-of-the-art multidisciplinary prototyping, 3D printing, CNC milling, PCB fabrication, and IoT robotics innovation sanctuary.",
   keywords: [
     "AICTE IDEA Lab",
     "VIT Chennai",
-    "VITC",
-    "Innovation Lab",
-    "Rapid Prototyping",
-    "3D Printing Chennai",
-    "Engineering Projects",
-    "CNC Machining",
-    "IoT Labs"
+    "VITC IDEA Lab",
+    "Vellore Institute of Technology",
+    "Prototyping Laboratory",
+    "3D Printing VIT",
+    "CNC Machining Chennai",
+    "Engineering Innovation Lab"
   ],
   authors: [{ name: "VIT Chennai & AICTE" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#003b71",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -40,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white text-slate-900 antialiased selection:bg-blue-600 selection:text-white font-sans">
+      <body className="min-h-screen bg-white text-slate-900 antialiased selection:bg-[#003b71] selection:text-white font-sans">
         {children}
       </body>
     </html>

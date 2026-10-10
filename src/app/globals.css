@@ -1,15 +1,23 @@
 @import "tailwindcss";
 
 :root {
+  --vit-navy: #003b71;
+  --vit-navy-dark: #002147;
+  --vit-blue: #0056b3;
+  --vit-gold: #d97706;
+  --vit-sky: #0284c7;
+  --vit-surface-grey: #f3f6fa;
   --background: #ffffff;
   --foreground: #0f172a;
 }
 
 body {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #0f172a;
   overflow-x: hidden;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -18,7 +26,7 @@ html {
 
 /* Institutional Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,10 +34,16 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #94a3b8;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #003b71;
+}
+
+/* Focus outline for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #003b71;
+  outline-offset: 2px;
 }

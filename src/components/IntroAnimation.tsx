@@ -9,7 +9,7 @@ interface IntroAnimationProps {
 }
 
 export default function IntroAnimation({ children }: IntroAnimationProps) {
-  const [showIntro, setShowIntro] = useState<boolean | null>(null);
+  const [showIntro, setShowIntro] = useState<boolean>(true);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -18,19 +18,6 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
     if (mediaQuery.matches) {
       setReducedMotion(true);
     }
-
-    // Check sessionStorage
-    try {
-      const hasSeenIntro = sessionStorage.getItem("vitc_idealab_intro_shown");
-      if (hasSeenIntro) {
-        setShowIntro(false);
-        return;
-      }
-    } catch {
-      // Ignore storage access errors
-    }
-
-    setShowIntro(true);
 
     // Lock scroll during intro
     document.body.style.overflow = "hidden";
@@ -46,11 +33,6 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
   }, [reducedMotion]);
 
   const handleComplete = () => {
-    try {
-      sessionStorage.setItem("vitc_idealab_intro_shown", "true");
-    } catch {
-      // Ignore storage access errors
-    }
     document.body.style.overflow = "";
     setShowIntro(false);
   };
@@ -201,7 +183,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                     delay: reducedMotion ? 0.35 : 0.85,
                     ease: [0.34, 1.56, 0.64, 1],
                   }}
-                  className="text-blue-600 font-light select-none text-3xl sm:text-5xl md:text-6xl lg:text-7xl inline-block mx-0.5 sm:mx-1"
+                  className="text-[#003B71] font-light select-none text-3xl sm:text-5xl md:text-6xl lg:text-7xl inline-block mx-0.5 sm:mx-1"
                 >
                   ×
                 </motion.span>
@@ -253,7 +235,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                   delay: reducedMotion ? 0.5 : 1.45,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="w-24 sm:w-36 h-[2px] bg-blue-600/30 my-6 sm:my-8"
+                className="w-24 sm:w-36 h-[2px] bg-[#003B71]/40 my-6 sm:my-8"
               />
 
               {/* TAGLINE: "Where your dream projects turn into reality" */}
@@ -297,7 +279,7 @@ export default function IntroAnimation({ children }: IntroAnimationProps) {
                     delay: reducedMotion ? 0.7 : 1.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="text-base sm:text-xl md:text-2xl font-semibold tracking-wide text-blue-700"
+                  className="text-base sm:text-xl md:text-2xl font-bold tracking-wide text-[#003B71]"
                 >
                   turn into reality
                 </motion.p>
