@@ -21,30 +21,30 @@ export default function Footer() {
         
         {/* Top Partner Branding Bar */}
         <div className="pb-12 mb-12 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="bg-white p-2 rounded-lg border border-slate-200">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs">
               <Image
                 src="/logos/aicte-logo.png"
                 alt="AICTE Logo"
-                width={56}
-                height={56}
-                className="w-12 h-12 object-contain"
+                width={70}
+                height={70}
+                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
               />
             </div>
-            <div className="bg-white p-2 rounded-lg border border-slate-200">
+            <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs">
               <Image
                 src="/logos/vit-chennai-logo.jpg"
                 alt="VIT Chennai Logo"
-                width={120}
-                height={56}
-                className="h-12 w-auto object-contain mix-blend-multiply"
+                width={160}
+                height={70}
+                className="h-14 sm:h-16 w-auto object-contain mix-blend-multiply"
               />
             </div>
-            <div className="hidden sm:block pl-2 border-l border-white/15">
-              <p className="text-white font-bold text-sm tracking-wide">
+            <div className="hidden sm:block pl-3 border-l border-white/20">
+              <p className="text-white font-extrabold text-base tracking-wide">
                 AICTE × VITC IDEA LAB
               </p>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 Scheme for Transformative Hands-on Engineering Education
               </p>
             </div>

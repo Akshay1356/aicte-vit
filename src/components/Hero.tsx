@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ArrowRight, BookOpen, Layers, Cpu, Award, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function Hero() {
@@ -12,7 +13,7 @@ export default function Hero() {
   ];
 
   return (
-    <section id="overview" className="relative pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+    <section id="overview" className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 sm:pb-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Grid */}
@@ -21,10 +22,29 @@ export default function Hero() {
           {/* Left Hero Narrative */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Institutional Accreditation Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-300 text-slate-800 text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
-              <span>AICTE Sanctioned Initiative • VIT Chennai Campus</span>
+            {/* Prominent Partner Badges & Accreditation */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 max-w-fit">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logos/aicte-logo.png"
+                  alt="AICTE Official Insignia"
+                  width={56}
+                  height={56}
+                  className="w-11 h-11 sm:w-13 sm:h-13 object-contain"
+                />
+                <Image
+                  src="/logos/vit-chennai-logo.jpg"
+                  alt="VIT Chennai Insignia"
+                  width={140}
+                  height={56}
+                  className="h-11 sm:h-13 w-auto object-contain mix-blend-multiply"
+                />
+              </div>
+              <div className="h-9 w-[1.5px] bg-slate-200 hidden sm:block" />
+              <div className="text-[11px] sm:text-xs text-slate-700 font-semibold leading-tight">
+                <span className="block text-[#003b71] font-bold">Government of India & VIT Chennai Joint Initiative</span>
+                <span>AICTE Sanction Ref: 1-931/AICTE/IDEA/2022</span>
+              </div>
             </div>
 
             {/* Headline */}

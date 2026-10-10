@@ -109,40 +109,40 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Institutional Brand Identity */}
-            <Link href="/" className="flex items-center gap-3.5 group select-none">
-              <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-3 sm:gap-4 group select-none">
+              <div className="flex items-center gap-2.5 sm:gap-3.5">
                 <Image
                   src="/logos/aicte-logo.png"
                   alt="AICTE Official Logo"
-                  width={46}
-                  height={46}
-                  className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
+                  width={72}
+                  height={72}
+                  className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 object-contain drop-shadow-xs"
                   priority
                 />
                 <Image
                   src="/logos/vit-chennai-logo.jpg"
                   alt="VIT Chennai Logo"
-                  width={105}
-                  height={48}
-                  className="h-9 sm:h-10 w-auto object-contain mix-blend-multiply"
+                  width={180}
+                  height={75}
+                  className="h-12 sm:h-14 lg:h-16 w-auto object-contain mix-blend-multiply drop-shadow-xs"
                   priority
                 />
               </div>
 
-              <div className="h-8 w-[1.5px] bg-slate-300 hidden sm:block mx-0.5" />
+              <div className="h-10 sm:h-12 w-[1.5px] bg-slate-300 hidden sm:block mx-1" />
 
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-center">
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#003b71]">
+                  <span className="font-extrabold text-base sm:text-lg lg:text-xl tracking-tight text-[#003b71]">
                     AICTE × VITC
                   </span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200/80">
+                  <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200/80">
                     IDEA LAB
                   </span>
                 </div>
-                <span className="text-[11px] text-slate-500 hidden sm:block font-normal tracking-wide">
+                <span className="text-[11px] sm:text-xs text-slate-500 hidden sm:block font-normal tracking-wide">
                   Idea Development, Evaluation & Application Lab • VIT Chennai
                 </span>
               </div>

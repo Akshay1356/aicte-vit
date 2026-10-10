@@ -24,7 +24,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "VIT Chennai & AICTE" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/logos/vit-chennai-logo.jpg" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/logos/vit-chennai-logo.jpg",
+    apple: "/logos/vit-chennai-logo.jpg",
   },
 };
 
