@@ -185,10 +185,10 @@ export default function ProjectsShowcase() {
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                 <span className="text-slate-500 font-medium">Prototyped in VITC IDEA Lab</span>
                 <a
-                  href="#booking"
+                  href="#facilities"
                   className="font-bold text-[#003b71] hover:underline inline-flex items-center gap-1"
                 >
-                  <span>Build your project here</span>
+                  <span>Explore Innovation Wings</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>

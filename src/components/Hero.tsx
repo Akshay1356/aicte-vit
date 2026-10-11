@@ -90,10 +90,10 @@ export default function Hero() {
             {/* Clear Primary and Secondary Calls to Action */}
             <div className="pt-3 flex flex-wrap items-center gap-3.5">
               <a
-                href="#booking"
+                href="#equipment"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm sm:text-base text-white bg-[#003b71] hover:bg-[#002850] active:scale-95 transition-all shadow-sm"
               >
-                <span>Book Equipment Slot</span>
+                <span>Explore Lab Machinery</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 

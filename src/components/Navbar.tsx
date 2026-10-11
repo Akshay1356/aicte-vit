@@ -31,7 +31,6 @@ export default function Navbar() {
         "projects",
         "mentorship",
         "safety",
-        "booking",
       ];
       const scrollPos = window.scrollY + 160;
 
@@ -79,7 +78,6 @@ export default function Navbar() {
     { name: "Projects", href: "#projects", id: "projects" },
     { name: "Mentorship", href: "#mentorship", id: "mentorship" },
     { name: "Safety & SOP", href: "#safety", id: "safety" },
-    { name: "Lab Booking", href: "#booking", id: "booking" },
   ];
 
   return (
@@ -238,14 +236,13 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Right: Refined Compact CTA & Mobile Toggle */}
+            {/* Right: Accessible Mobile Toggle */}
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="#booking"
-                className="hidden sm:inline-flex items-center justify-center gap-2 h-11 px-5 rounded-md text-[13px] font-bold text-white bg-[#003B71] hover:bg-[#002147] active:scale-95 transition-all shadow-xs border border-transparent hover:border-[#002147] whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#003B71] focus:ring-offset-2"
+                href="#safety"
+                className="hidden sm:inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-[13px] font-bold text-white bg-[#003B71] hover:bg-[#002147] active:scale-95 transition-all shadow-xs border border-transparent hover:border-[#002147] whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#003B71] focus:ring-offset-2"
               >
-                <CalendarCheck className="w-4 h-4 text-white/90" />
-                <span>Book Lab Slot</span>
+                <span>Lab Safety SOP</span>
               </a>
 
               {/* Accessible Mobile Menu Toggle Button */}
@@ -311,15 +308,14 @@ export default function Navbar() {
               );
             })}
 
-            {/* Mobile Booking CTA & Lab Info */}
+            {/* Mobile Lab Info */}
             <div className="pt-4 border-t border-slate-100 mt-3 space-y-3">
               <a
-                href="#booking"
+                href="#safety"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 h-11 rounded-md text-sm font-bold text-white bg-[#003B71] hover:bg-[#002147] transition-colors shadow-xs"
+                className="w-full flex items-center justify-center gap-2 h-10 rounded-md text-sm font-bold text-white bg-[#003B71] hover:bg-[#002147] transition-colors shadow-xs"
               >
-                <CalendarCheck className="w-4 h-4" />
-                <span>Book Lab Slot</span>
+                <span>Lab Safety SOP</span>
               </a>
 
               <div className="flex flex-col gap-2 text-xs text-slate-600 px-2 pt-1 border-t border-slate-100">

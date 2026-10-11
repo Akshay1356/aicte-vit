@@ -130,22 +130,10 @@ export default function EquipmentShowcase() {
     return matchesCategory && matchesQuery;
   });
 
-  const handleSelectEquipment = (equipName: string) => {
-    // Scroll to booking form and prefill if possible
-    const bookingSection = document.getElementById("booking");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: "smooth" });
-      const selectElement = document.getElementById("equipment-select") as HTMLSelectElement | null;
-      if (selectElement) {
-        // Find matching option
-        for (let i = 0; i < selectElement.options.length; i++) {
-          if (selectElement.options[i].text.includes(equipName.split(" ")[0])) {
-            selectElement.selectedIndex = i;
-            selectElement.dispatchEvent(new Event("change", { bubbles: true }));
-            break;
-          }
-        }
-      }
+  const handleViewSafetyProtocols = () => {
+    const safetySection = document.getElementById("safety");
+    if (safetySection) {
+      safetySection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -307,10 +295,10 @@ export default function EquipmentShowcase() {
                 </div>
 
                 <button
-                  onClick={() => handleSelectEquipment(item.name)}
+                  onClick={handleViewSafetyProtocols}
                   className="w-full py-2.5 px-3 rounded-md text-xs font-bold text-white bg-[#003b71] hover:bg-[#002850] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shadow-sm"
                 >
-                  <span>Reserve This Machine</span>
+                  <span>View Lab Safety SOP</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

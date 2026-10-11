@@ -127,7 +127,7 @@ export default function MentorshipSection() {
             </div>
           </div>
           <a
-            href="#booking"
+            href="mailto:idealab@vit.ac.in"
             className="px-4 py-2 rounded-md bg-[#003b71] hover:bg-[#002850] text-white text-xs font-bold shrink-0 transition-colors shadow-sm"
           >
             Connect With Lab Staff

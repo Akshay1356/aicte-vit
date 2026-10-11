@@ -5,7 +5,7 @@ import Facilities from "@/components/Facilities";
 import EquipmentShowcase from "@/components/EquipmentShowcase";
 import ProjectsShowcase from "@/components/ProjectsShowcase";
 import MentorshipSection from "@/components/MentorshipSection";
-import BookingSection from "@/components/BookingSection";
+import SafetySection from "@/components/SafetySection";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -19,7 +19,7 @@ export default function HomePage() {
           <EquipmentShowcase />
           <ProjectsShowcase />
           <MentorshipSection />
-          <BookingSection />
+          <SafetySection />
         </main>
         <Footer />
       </div>

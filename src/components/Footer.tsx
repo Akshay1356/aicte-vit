@@ -179,11 +179,6 @@ export default function Footer() {
                   Laboratory Safety Rules & PPE
                 </a>
               </li>
-              <li>
-                <a href="#booking" className="hover:text-white transition-colors">
-                  Equipment Requisition Form
-                </a>
-              </li>
             </ul>
           </div>
 
