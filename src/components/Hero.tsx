@@ -14,9 +14,14 @@ export default function Hero() {
   ];
 
   return (
-    <section id="overview" className="relative pt-36 sm:pt-40 lg:pt-44 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+    <section id="overview" className="relative pt-32 sm:pt-36 lg:pt-38 pb-16 sm:pb-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Full-width Panoramic 2-Slide Hero Banner Carousel right at the top */}
+        <div className="mb-12 sm:mb-16">
+          <HeroBannerCarousel />
+        </div>
+
         {/* Main Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
@@ -158,13 +163,8 @@ export default function Hero() {
 
         </div>
 
-        {/* Panoramic 2-Slide Hero Banner Carousel */}
-        <div className="mt-12 sm:mt-14">
-          <HeroBannerCarousel />
-        </div>
-
         {/* Verified Stats Strip */}
-        <div className="mt-12 pt-10 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="mt-14 pt-10 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((item, idx) => {
             const Icon = item.icon;
             return (
