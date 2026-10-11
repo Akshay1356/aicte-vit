@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight, BookOpen, Layers, Cpu, Award, Zap, ShieldCheck, CheckCircle2 } from "lucide-react";
+import HeroBannerCarousel from "./HeroBannerCarousel";
 
 export default function Hero() {
   const stats = [
@@ -157,8 +158,13 @@ export default function Hero() {
 
         </div>
 
+        {/* Panoramic 2-Slide Hero Banner Carousel */}
+        <div className="mt-12 sm:mt-14">
+          <HeroBannerCarousel />
+        </div>
+
         {/* Verified Stats Strip */}
-        <div className="mt-14 pt-10 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="mt-12 pt-10 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((item, idx) => {
             const Icon = item.icon;
             return (
