@@ -14,14 +14,15 @@ export default function Hero() {
   ];
 
   return (
-    <section id="overview" className="relative pt-32 sm:pt-36 lg:pt-38 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+    <section id="overview" className="relative pt-24 sm:pt-28 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+      
+      {/* Edge-to-Edge Full-Screen Hero Banner Carousel */}
+      <div className="w-full mb-12 sm:mb-16">
+        <HeroBannerCarousel />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Full-width Panoramic 2-Slide Hero Banner Carousel right at the top */}
-        <div className="mb-12 sm:mb-16">
-          <HeroBannerCarousel />
-        </div>
-
         {/* Main Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           

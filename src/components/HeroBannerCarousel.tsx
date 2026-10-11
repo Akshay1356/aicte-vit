@@ -115,7 +115,7 @@ export default function HeroBannerCarousel() {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl border border-slate-200/90 shadow-md bg-[#051336] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#003b71]"
+      className="relative w-full overflow-hidden bg-[#051336] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#003b71]"
       role="region"
       aria-roledescription="carousel"
       aria-label="VIT Chennai & AICTE IDEA Lab Featured Banner"
@@ -127,8 +127,8 @@ export default function HeroBannerCarousel() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* 1024 / 409 wide panoramic aspect ratio matching the generated banner assets */}
-      <div className="relative w-full aspect-[1024/409] bg-[#051336] overflow-hidden">
+      {/* Full screen viewport height (accounting for fixed header) */}
+      <div className="relative w-full h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[calc(100vh-125px)] min-h-[360px] max-h-[820px] bg-[#051336] overflow-hidden">
         {slides.map((slide, index) => {
           const isActive = index === currentIndex;
           return (
@@ -151,7 +151,7 @@ export default function HeroBannerCarousel() {
                   src={slide.src}
                   alt={slide.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
+                  sizes="100vw"
                   className="object-cover object-center select-none"
                   priority={index === 0}
                   quality={90}
