@@ -21,50 +21,26 @@ export default function Hero() {
         <HeroBannerCarousel />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Main Hero Flex Layout: ~46% Left, ~54% Right on Desktop */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center justify-between">
           
-          {/* Left Hero Narrative */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Hero Narrative: ~46% width on desktop */}
+          <div className="w-full lg:w-[46%] space-y-6">
             
-            {/* Prominent Partner Badges & Accreditation */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 max-w-fit">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/aicte-logo.png"
-                  alt="AICTE Official Insignia"
-                  width={56}
-                  height={56}
-                  className="w-11 h-11 sm:w-13 sm:h-13 object-contain"
-                />
-                <Image
-                  src="/logos/vit-chennai-logo.jpg"
-                  alt="VIT Chennai Insignia"
-                  width={140}
-                  height={56}
-                  className="h-11 sm:h-13 w-auto object-contain mix-blend-multiply"
-                />
-              </div>
-              <div className="h-9 w-[1.5px] bg-slate-200 hidden sm:block" />
-              <div className="text-[11px] sm:text-xs text-slate-700 font-semibold leading-tight">
-                <span className="block text-[#003b71] font-bold">Government of India & VIT Chennai Joint Initiative</span>
-                <span>AICTE Sanction Ref: 1-931/AICTE/IDEA/2022</span>
-              </div>
-            </div>
-
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#002147] tracking-tight leading-[1.18]">
+            <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-[#002147] tracking-tight leading-[1.15]">
               Where Student Engineering Concepts Become{" "}
               <span className="text-[#003b71] underline decoration-amber-400 decoration-4 underline-offset-4">
                 Working Reality
               </span>
+              .
             </h1>
 
             {/* Clear Statement of Purpose */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              The <strong>AICTE–VITC IDEA Lab</strong> (Idea Development, Evaluation & Application) is a central 24/7 innovation facility at VIT Chennai. It equips students, research scholars, and faculty from all engineering branches with industrial-grade tools for 3D additive printing, precision CNC machining, circuit fabrication, and edge AI prototyping.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              The <strong>AICTE–VITC IDEA Lab</strong> (Idea Development, Evaluation &amp; Application) is a central 24/7 innovation facility at VIT Chennai. It equips students, research scholars, and faculty from all engineering branches with industrial-grade tools for 3D additive printing, precision CNC machining, circuit fabrication, and edge AI prototyping.
             </p>
 
             {/* Bulleted Capabilities */}
@@ -88,7 +64,7 @@ export default function Hero() {
             </div>
 
             {/* Clear Primary and Secondary Calls to Action */}
-            <div className="pt-3 flex flex-wrap items-center gap-3.5">
+            <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <a
                 href="#equipment"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm sm:text-base text-white bg-[#003b71] hover:bg-[#002850] active:scale-95 transition-all shadow-sm"
@@ -109,82 +85,86 @@ export default function Hero() {
                 className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#003b71] hover:underline px-2 py-1"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>View Lab SOP & Safety Rules</span>
+                <span>View Lab SOP &amp; Safety Rules</span>
               </a>
             </div>
 
           </div>
 
-          {/* Right: Redesigned Authentic VIT Chennai AICTE Lab Feature Card */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl overflow-hidden border border-slate-300/80 shadow-lg bg-[#002147] flex flex-col">
+          {/* Right: Spacious VIT Chennai AICTE Lab Feature Card: ~54% width on desktop */}
+          <div className="w-full lg:w-[54%]">
+            <div className="rounded-2xl overflow-hidden border border-slate-300/80 shadow-xl bg-[#002147] flex flex-col">
               
-              {/* Upper Portion: Authentic Campus Photograph with Heading & Translucent Panels */}
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] bg-[#001838] overflow-hidden">
+              {/* Upper Portion: Authentic Campus Photograph (roughly 60% of card) */}
+              <div className="relative w-full aspect-[16/9] sm:aspect-[16/9.5] bg-[#001838] overflow-hidden">
                 {/* Genuine VIT Chennai Campus Photograph */}
                 <Image
                   src="/vit_chennai_campus.jpg"
                   alt="VIT Chennai Campus Entrance"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                  className="object-cover object-center select-none"
+                  sizes="(max-width: 1024px) 100vw, 750px"
+                  className="object-cover object-[center_35%] select-none brightness-[1.05] contrast-[1.03]"
                   priority
                 />
 
-                {/* Subtle navy gradient on the left so white heading remains legible */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#002147]/90 via-[#002147]/45 to-transparent pointer-events-none" />
+                {/* Subtle left-to-right navy gradient ONLY on the left for heading readability without darkening the whole image */}
+                <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-[#002147]/85 via-[#002147]/40 to-transparent pointer-events-none" />
                 
-                {/* Bottom subtle gradient for translucent panels */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002147]/80 via-transparent to-transparent pointer-events-none" />
+                {/* Subtle bottom vignette for the overlay panels */}
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#002147]/75 to-transparent pointer-events-none" />
 
-                {/* Heading Content Overlay */}
-                <div className="absolute top-5 left-5 sm:top-6 sm:left-6 right-5 z-10">
-                  <span className="block text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-sky-300 drop-shadow-sm">
+                {/* Heading Content Overlay: Upper-Left */}
+                <div className="absolute top-4 left-4 sm:top-5 sm:left-6 z-10">
+                  <span className="block text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-amber-300 drop-shadow-sm">
                     CENTRAL INNOVATION FACILITY
                   </span>
                   
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mt-1 tracking-tight drop-shadow-sm">
+                  <h3 className="text-xl sm:text-2xl lg:text-[26px] font-extrabold text-white leading-tight mt-0.5 tracking-tight drop-shadow-sm">
                     VIT Chennai
                     <span className="block text-white">AICTE Lab</span>
                   </h3>
                   
                   {/* Small yellow accent line beneath the title */}
-                  <div className="w-12 h-1 bg-amber-400 rounded-full mt-2 mb-2" />
+                  <div className="w-10 h-0.5 bg-amber-400 rounded-full mt-1.5 mb-1.5" />
 
-                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-snug drop-shadow-sm max-w-xs">
+                  <p className="text-[11px] sm:text-xs text-slate-200 font-medium leading-snug drop-shadow-sm">
                     Idea Development, Evaluation &amp; Application
                   </p>
                 </div>
 
-                {/* Translucent Information Panels (Location & Operating Hours) */}
-                <div className="absolute bottom-4 left-4 right-4 z-10 grid grid-cols-2 gap-2.5 sm:gap-3">
+                {/* Compact Translucent Information Panels (Location & Operating Hours) */}
+                <div className="absolute bottom-3 left-4 right-4 z-10 grid grid-cols-2 gap-2.5 sm:gap-3">
                   {/* Campus Location Panel */}
-                  <div className="p-2.5 sm:p-3 rounded-lg bg-[#002147]/75 backdrop-blur-md border border-sky-400/25 text-white shadow-sm flex items-start gap-2 sm:gap-2.5">
-                    <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" aria-hidden="true" />
+                  <div className="py-2 px-3 rounded-lg bg-[#002147]/70 backdrop-blur-md border border-sky-400/25 text-white shadow-sm flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-sky-500/20 flex items-center justify-center shrink-0">
+                      <MapPin className="w-4 h-4 text-sky-400" aria-hidden="true" />
+                    </div>
                     <div className="min-w-0">
-                      <span className="block text-[10px] sm:text-[11px] font-bold text-sky-300 uppercase tracking-wider">
+                      <span className="block text-[9px] sm:text-[10px] font-bold text-sky-300 uppercase tracking-wider">
                         Campus Location
                       </span>
-                      <span className="block text-xs sm:text-[13px] font-bold text-white leading-tight truncate">
+                      <span className="block text-xs font-bold text-white leading-tight truncate">
                         Academic Block 2
                       </span>
-                      <span className="block text-[11px] text-slate-300 leading-tight">
+                      <span className="block text-[10px] text-slate-300 leading-tight">
                         Ground Floor
                       </span>
                     </div>
                   </div>
 
                   {/* Operating Hours Panel */}
-                  <div className="p-2.5 sm:p-3 rounded-lg bg-[#002147]/75 backdrop-blur-md border border-sky-400/25 text-white shadow-sm flex items-start gap-2 sm:gap-2.5">
-                    <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" aria-hidden="true" />
+                  <div className="py-2 px-3 rounded-lg bg-[#002147]/70 backdrop-blur-md border border-sky-400/25 text-white shadow-sm flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-sky-500/20 flex items-center justify-center shrink-0">
+                      <Clock className="w-4 h-4 text-sky-400" aria-hidden="true" />
+                    </div>
                     <div className="min-w-0">
-                      <span className="block text-[10px] sm:text-[11px] font-bold text-amber-300 uppercase tracking-wider">
+                      <span className="block text-[9px] sm:text-[10px] font-bold text-sky-300 uppercase tracking-wider">
                         Operating Hours
                       </span>
-                      <span className="block text-xs sm:text-[13px] font-bold text-white leading-tight truncate">
+                      <span className="block text-xs font-bold text-white leading-tight truncate">
                         08:30 AM – 08:00 PM
                       </span>
-                      <span className="block text-[11px] text-slate-300 leading-tight truncate">
+                      <span className="block text-[10px] text-slate-300 leading-tight truncate">
                         Monday – Saturday
                       </span>
                     </div>
@@ -192,18 +172,18 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Lower Portion: Dark Navy Section with KEY FOCUS AREAS (4 Columns) */}
-              <div className="p-5 sm:p-6 bg-[#002147] border-t border-sky-500/20">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-sky-300">
+              {/* Lower Portion: Dark Navy Section with KEY FOCUS AREAS (4 Spacious Equal Columns) */}
+              <div className="py-4 px-4 sm:px-6 bg-[#001c3d] border-t border-sky-500/20">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-sky-400">
                     KEY FOCUS AREAS
                   </span>
-                  <div className="h-px flex-1 bg-sky-500/20" />
+                  <div className="h-px flex-1 bg-sky-500/25" />
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left">
                   {/* Column 1 */}
-                  <div className="space-y-1">
+                  <div className="space-y-0.5">
                     <h4 className="text-xs sm:text-[13px] font-bold text-white leading-snug">
                       3D Additive Manufacturing
                     </h4>
@@ -213,7 +193,7 @@ export default function Hero() {
                   </div>
 
                   {/* Column 2 */}
-                  <div className="space-y-1 border-l border-sky-500/15 pl-3 sm:pl-3">
+                  <div className="space-y-0.5 sm:border-l sm:border-sky-500/25 sm:pl-3">
                     <h4 className="text-xs sm:text-[13px] font-bold text-white leading-snug">
                       Precision CNC Machining
                     </h4>
@@ -223,7 +203,7 @@ export default function Hero() {
                   </div>
 
                   {/* Column 3 */}
-                  <div className="space-y-1 sm:border-l sm:border-sky-500/15 sm:pl-3">
+                  <div className="space-y-0.5 lg:border-l lg:border-sky-500/25 lg:pl-3">
                     <h4 className="text-xs sm:text-[13px] font-bold text-white leading-snug">
                       Circuit Fabrication
                     </h4>
@@ -233,7 +213,7 @@ export default function Hero() {
                   </div>
 
                   {/* Column 4 */}
-                  <div className="space-y-1 border-l border-sky-500/15 pl-3 sm:pl-3">
+                  <div className="space-y-0.5 sm:border-l sm:border-sky-500/25 sm:pl-3">
                     <h4 className="text-xs sm:text-[13px] font-bold text-white leading-snug">
                       Edge AI Prototyping
                     </h4>
