@@ -3,42 +3,38 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  ChevronRight,
   Phone,
   Mail,
   Clock,
   ExternalLink,
-  CalendarCheck,
+  Sparkles,
 } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("overview");
+  const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Active section detection using intersection offsets
-      const sections = [
-        "overview",
-        "facilities",
-        "equipment",
-        "projects",
-        "mentorship",
-        "safety",
-      ];
-      const scrollPos = window.scrollY + 160;
+      if (isHomePage) {
+        const sections = ["home", "about", "research", "facilities", "team", "contact"];
+        const scrollPos = window.scrollY + 180;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sections[i]);
-          break;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sections[i]);
+          if (el && el.offsetTop <= scrollPos) {
+            setActiveSection(sections[i]);
+            break;
+          }
         }
       }
     };
@@ -46,7 +42,7 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
@@ -72,21 +68,34 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: "Overview", href: "#overview", id: "overview" },
-    { name: "Innovation Wings", href: "#facilities", id: "facilities" },
-    { name: "Machinery", href: "#equipment", id: "equipment" },
-    { name: "Projects", href: "#projects", id: "projects" },
-    { name: "Mentorship", href: "#mentorship", id: "mentorship" },
-    { name: "Safety & SOP", href: "#safety", id: "safety" },
+    { name: "Home", href: isHomePage ? "#home" : "/#home", id: "home", isPage: false },
+    { name: "About", href: isHomePage ? "#about" : "/#about", id: "about", isPage: false },
+    { name: "Facilities", href: isHomePage ? "#facilities" : "/#facilities", id: "facilities", isPage: false },
+    { name: "Research", href: isHomePage ? "#research" : "/#research", id: "research", isPage: false },
+    { name: "Gallery", href: "/gallery", id: "gallery", isPage: true },
+    { name: "Events", href: "/events", id: "events", isPage: true },
+    { name: "Contact", href: isHomePage ? "#contact" : "/#contact", id: "contact", isPage: false },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isHomePage && href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.slice(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* 1. Top Institutional Utility Bar (Official VIT Dark Navy #002147) */}
+      {/* 1. Top Institutional Utility Bar (VIT Official Navy #002147) */}
       <div className="bg-[#002147] text-white text-[11px] sm:text-[12px] border-b border-[#003B71]/40 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-9">
-            {/* Left Institutional Portal Links */}
+            {/* Left Institutional Links */}
             <div className="flex items-center space-x-4 text-slate-300">
               <a
                 href="https://chennai.vit.ac.in/"
@@ -135,21 +144,21 @@ export default function Navbar() {
               </span>
               <span className="text-white/20 select-none">|</span>
               <a
-                href="tel:+914439931555"
+                href="tel:+914439931196"
                 className="flex items-center gap-1.5 hover:text-white transition-colors"
-                aria-label="Call VIT Chennai IDEA Lab"
+                aria-label="Call VIT Chennai Coordinator"
               >
                 <Phone className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>+91 44 3993 1555</span>
+                <span>+91 44 3993 1196</span>
               </a>
               <span className="text-white/20 select-none">|</span>
               <a
-                href="mailto:idealab@vit.ac.in"
+                href="mailto:sakthivel.g@vit.ac.in"
                 className="flex items-center gap-1.5 hover:text-white transition-colors"
-                aria-label="Email VIT Chennai IDEA Lab"
+                aria-label="Email VIT Chennai Coordinator"
               >
                 <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>idealab@vit.ac.in</span>
+                <span>sakthivel.g@vit.ac.in</span>
               </a>
             </div>
           </div>
@@ -165,9 +174,9 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 sm:h-22">
+          <div className="flex items-center justify-between h-20">
             
-            {/* Left: Institutional Brand Identity */}
+            {/* Left: Brand Identity */}
             <Link
               href="/"
               className="flex items-center gap-3 sm:gap-3.5 group select-none shrink-0"
@@ -177,75 +186,78 @@ export default function Navbar() {
                 <Image
                   src="/logos/aicte-logo.png"
                   alt="AICTE Official Insignia"
-                  width={56}
-                  height={56}
-                  className="w-11 h-11 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain shrink-0 drop-shadow-xs"
+                  width={52}
+                  height={52}
+                  className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 object-contain shrink-0 drop-shadow-xs"
                   priority
                 />
                 <Image
                   src="/logos/vit-chennai-logo.jpg"
                   alt="VIT Chennai University Emblem"
-                  width={140}
-                  height={56}
-                  className="h-11 sm:h-12 lg:h-13 w-auto object-contain shrink-0 mix-blend-multiply drop-shadow-xs"
+                  width={130}
+                  height={52}
+                  className="h-10 sm:h-11 lg:h-12 w-auto object-contain shrink-0 mix-blend-multiply drop-shadow-xs"
                   priority
                 />
               </div>
 
-              <div className="h-9 sm:h-10 w-[1.5px] bg-slate-200 hidden sm:block mx-0.5" />
+              <div className="h-9 w-[1.5px] bg-slate-200 hidden sm:block mx-0.5" />
 
               <div className="flex flex-col justify-center">
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#003B71]">
-                    AICTE × VITC
-                  </span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200/80">
-                    IDEA LAB
+                    VIT- AICTE IDEA LAB
                   </span>
                 </div>
                 <span className="text-[10.5px] text-slate-500 hidden xl:block font-normal tracking-tight">
-                  Idea Development, Evaluation & Application Lab • VIT Chennai
+                  Innovation &amp; Research Hub • VIT Chennai Campus
                 </span>
               </div>
             </Link>
 
             {/* Center-Right: Desktop Primary Navigation */}
             <nav
-              className="hidden lg:flex items-center gap-0.5 xl:gap-1.5"
+              className="hidden lg:flex items-center gap-1 xl:gap-2"
               aria-label="Primary Navigation"
             >
               {navLinks.map((link) => {
-                const isActive = activeSection === link.id;
+                const isActive = link.isPage
+                  ? pathname === link.href
+                  : isHomePage && activeSection === link.id;
+
                 return (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
-                    className={`relative text-[13px] xl:text-[13.5px] font-semibold whitespace-nowrap px-2.5 xl:px-3 py-2 rounded-md transition-colors ${
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`relative text-[13.5px] font-semibold whitespace-nowrap px-3 py-2 rounded-md transition-colors ${
                       isActive
                         ? "text-[#003B71]"
                         : "text-slate-700 hover:text-[#003B71] hover:bg-slate-50"
                     }`}
                   >
                     <span>{link.name}</span>
-                    {/* Restrained active indicator underline */}
                     {isActive && (
-                      <span className="absolute bottom-0 left-2.5 right-2.5 h-[2.5px] bg-[#003B71] rounded-full transition-all" />
+                      <span className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#003B71] rounded-full transition-all" />
                     )}
-                  </a>
+                  </Link>
                 );
               })}
             </nav>
 
-            {/* Right: Accessible Mobile Toggle */}
+            {/* Right: Submit Ideas CTA Button & Mobile Menu Toggle */}
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="#safety"
+                href="https://forms.gle/AGdph5794pXzrbbz8"
+                target="_blank"
+                rel="noreferrer"
                 className="hidden sm:inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-[13px] font-bold text-white bg-[#003B71] hover:bg-[#002147] active:scale-95 transition-all shadow-xs border border-transparent hover:border-[#002147] whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#003B71] focus:ring-offset-2"
               >
-                <span>Lab Safety SOP</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Submit Your Ideas</span>
               </a>
 
-              {/* Accessible Mobile Menu Toggle Button */}
+              {/* Mobile Menu Toggle Button */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -262,82 +274,60 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 3. Accessible Mobile Drawer Menu & Overlay */}
+      {/* 3. Mobile Navigation Drawer & Overlay */}
       {mobileMenuOpen && (
         <div
           id="mobile-navigation-drawer"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="lg:hidden fixed inset-x-0 top-[116px] md:top-[125px] bottom-0 bg-black/40 backdrop-blur-xs z-50 flex flex-col justify-start"
+          className="lg:hidden fixed inset-x-0 top-[80px] md:top-[116px] bottom-0 bg-black/50 backdrop-blur-xs z-50 flex flex-col justify-start"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="bg-white border-b border-slate-200 px-5 pt-4 pb-6 space-y-1 shadow-xl max-h-[calc(100vh-130px)] overflow-y-auto"
+            className="bg-white border-b border-slate-200 px-5 pt-4 pb-6 space-y-1 shadow-xl max-h-[calc(100vh-100px)] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-2 mb-1 border-b border-slate-100">
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
               <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                Laboratory Navigation
+                Menu Navigation
               </span>
-              <span className="text-[11px] font-medium text-slate-500">
-                AICTE × VITC
+              <span className="text-[11px] font-semibold text-[#003B71]">
+                VIT- AICTE IDEA LAB
               </span>
             </div>
 
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = link.isPage
+                ? pathname === link.href
+                : isHomePage && activeSection === link.id;
+
               return (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`flex items-center justify-between text-sm font-semibold px-3 py-2.5 rounded-md transition-colors ${
                     isActive
                       ? "bg-blue-50 text-[#003B71]"
                       : "text-slate-800 hover:text-[#003B71] hover:bg-slate-50"
                   }`}
                 >
-                  <span className="whitespace-nowrap">{link.name}</span>
-                  <ChevronRight
-                    className={`w-4 h-4 ${
-                      isActive ? "text-[#003B71]" : "text-slate-400"
-                    }`}
-                  />
-                </a>
+                  <span>{link.name}</span>
+                </Link>
               );
             })}
 
-            {/* Mobile Lab Info */}
-            <div className="pt-4 border-t border-slate-100 mt-3 space-y-3">
+            <div className="pt-4 border-t border-slate-100">
               <a
-                href="#safety"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 h-10 rounded-md text-sm font-bold text-white bg-[#003B71] hover:bg-[#002147] transition-colors shadow-xs"
+                href="https://forms.gle/AGdph5794pXzrbbz8"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-md font-bold text-sm text-white bg-[#003B71] hover:bg-[#002147] transition-colors shadow-sm"
               >
-                <span>Lab Safety SOP</span>
+                <Sparkles className="w-4 h-4 text-amber-300" />
+                <span>Submit Your Ideas</span>
               </a>
-
-              <div className="flex flex-col gap-2 text-xs text-slate-600 px-2 pt-1 border-t border-slate-100">
-                <span className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                  <span>Mon–Sat: 8:30 AM – 8:00 PM</span>
-                </span>
-                <a
-                  href="tel:+914439931555"
-                  className="flex items-center gap-2 hover:text-[#003B71]"
-                >
-                  <Phone className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>+91 44 3993 1555</span>
-                </a>
-                <a
-                  href="mailto:idealab@vit.ac.in"
-                  className="flex items-center gap-2 hover:text-[#003B71]"
-                >
-                  <Mail className="w-3.5 h-3.5 text-sky-500 shrink-0" />
-                  <span>idealab@vit.ac.in</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -345,4 +335,3 @@ export default function Navbar() {
     </header>
   );
 }
-

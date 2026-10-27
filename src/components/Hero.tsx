@@ -2,19 +2,19 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, BookOpen, Layers, Cpu, Award, Zap, ShieldCheck, CheckCircle2, MapPin, Clock } from "lucide-react";
+import { ArrowRight, Sparkles, Layers, Cpu, Award, Users, CheckCircle2, MapPin, Clock } from "lucide-react";
 import HeroBannerCarousel from "./HeroBannerCarousel";
 
 export default function Hero() {
   const stats = [
-    { label: "AICTE Sanctioned Infrastructure", value: "₹1.10 Cr+", icon: Award, detail: "Central funding for advanced machine tools" },
-    { label: "Specialized Laboratory Wings", value: "6 Core Wings", icon: Layers, detail: "Mechanical, Electronics, IoT & Optics" },
-    { label: "High-Precision Machine Tools", value: "25+ Machines", icon: Cpu, detail: "Industrial 3D printers, CNC & Lasers" },
-    { label: "Student & Faculty Prototypes", value: "650+ Projects", icon: Zap, detail: "Validated hardware & patent filings" },
+    { label: "Specialized Lab Wings", value: "4 Wings", icon: Layers, detail: "Prototyping, Manufacturing, Electronics & PCB" },
+    { label: "Core Innovation Pillars", value: "3 Pillars", icon: Award, detail: "R&D, Collaborative Learning, Innovation Hub" },
+    { label: "Multidisciplinary Faculty", value: "Tech-Gurus", icon: Users, detail: "Mentorship from SMEC, SCOPE, SELECT" },
+    { label: "Central Infrastructure", value: "AICTE Sanctioned", icon: Cpu, detail: "Academic Block 2, Ground Floor" },
   ];
 
   return (
-    <section id="overview" className="relative pt-24 sm:pt-28 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+    <section id="home" className="relative pt-24 sm:pt-28 pb-16 sm:pb-20 bg-white border-b border-slate-200">
       
       {/* Edge-to-Edge Full-Screen Hero Banner Carousel */}
       <div className="w-full mb-12 sm:mb-16">
@@ -29,63 +29,64 @@ export default function Hero() {
           {/* Left Hero Narrative: ~46% width on desktop */}
           <div className="w-full lg:w-[46%] space-y-6">
             
-            {/* Headline */}
+            {/* Eyebrow Badge from source */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-[#003B71] text-xs font-bold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+              <span>VIT CHENNAI&apos;S LEADING INNOVATION HUB</span>
+            </div>
+
+            {/* Headline matching source */}
             <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-[#002147] tracking-tight leading-[1.15]">
-              Where Student Engineering Concepts Become{" "}
+              Where Ideas{" "}
               <span className="text-[#003b71] underline decoration-amber-400 decoration-4 underline-offset-4">
-                Working Reality
-              </span>
-              .
+                Evolve
+              </span>{" "}
+              Into <span className="text-[#003b71]">Impact</span>.
             </h1>
 
-            {/* Clear Statement of Purpose */}
+            {/* Clear Statement of Purpose from source */}
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              The <strong>AICTE–VITC IDEA Lab</strong> (Idea Development, Evaluation &amp; Application) is a central 24/7 innovation facility at VIT Chennai. It equips students, research scholars, and faculty from all engineering branches with industrial-grade tools for 3D additive printing, precision CNC machining, circuit fabrication, and edge AI prototyping.
+              <strong>IDEA LAB</strong> accelerates innovation and technological excellence. Through advanced infrastructure, expert mentorship, and collaborative ecosystems, we empower students and faculty to build scalable, industry-ready solutions.
             </p>
 
-            {/* Bulleted Capabilities */}
+            {/* Verified Capabilities from source */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm text-slate-700 font-medium">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Open to all multidisciplinary VIT branches</span>
+                <span>Comprehensive training programs</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Certified lab technicians on standby</span>
+                <span>End-to-end prototyping &amp; development</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>24/7 access for sanctioned hackathon teams</span>
+                <span>Expert mentoring by senior faculty</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Direct mentoring from senior research faculty</span>
+                <span>Incubation &amp; commercialization support</span>
               </div>
             </div>
 
             {/* Clear Primary and Secondary Calls to Action */}
             <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <a
-                href="#equipment"
+                href="#facilities"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm sm:text-base text-white bg-[#003b71] hover:bg-[#002850] active:scale-95 transition-all shadow-sm"
               >
-                <span>Explore Lab Machinery</span>
+                <span>Explore Our Facilities</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
               <a
-                href="#facilities"
+                href="https://forms.gle/AGdph5794pXzrbbz8"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-md font-semibold text-sm sm:text-base text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-300 transition-colors"
               >
-                <span>Explore 6 Innovation Wings</span>
-              </a>
-
-              <a
-                href="#safety"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#003b71] hover:underline px-2 py-1"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>View Lab SOP &amp; Safety Rules</span>
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Submit Your Ideas</span>
               </a>
             </div>
 

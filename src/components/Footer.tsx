@@ -1,64 +1,78 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import {
   MapPin,
   Mail,
   Phone,
   ExternalLink,
-  Shield,
-  Award,
-  Globe,
-  FileText,
   Clock,
+  Sparkles,
 } from "lucide-react";
 
 export default function Footer() {
+  const quickLinks = [
+    { name: "Home", href: "/#home" },
+    { name: "About", href: "/#about" },
+    { name: "Facilities", href: "/#facilities" },
+    { name: "Research", href: "/#research" },
+  ];
+
+  const exploreLinks = [
+    { name: "Gallery", href: "/gallery" },
+    { name: "Events", href: "/events" },
+    { name: "Submit Your Ideas", href: "https://forms.gle/AGdph5794pXzrbbz8", external: true },
+    { name: "VIT Chennai Portal", href: "https://chennai.vit.ac.in", external: true },
+  ];
+
   return (
-    <footer className="bg-[#002147] text-slate-300 pt-16 pb-12 border-t border-[#003B71]/40">
+    <footer className="bg-[#002147] text-slate-300 pt-16 pb-10 border-t border-[#003B71]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Partner Branding Bar */}
-        <div className="pb-12 mb-12 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="pb-10 mb-10 border-b border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-4 sm:gap-6">
-            <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs">
+            <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200 shadow-xs">
               <Image
                 src="/logos/aicte-logo.png"
                 alt="AICTE Logo"
-                width={70}
-                height={70}
-                className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                width={60}
+                height={60}
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
               />
             </div>
-            <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs">
+            <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-slate-200 shadow-xs">
               <Image
                 src="/logos/vit-chennai-logo.jpg"
                 alt="VIT Chennai Logo"
-                width={160}
-                height={70}
-                className="h-14 sm:h-16 w-auto object-contain mix-blend-multiply"
+                width={140}
+                height={60}
+                className="h-12 sm:h-14 w-auto object-contain mix-blend-multiply"
               />
             </div>
             <div className="hidden sm:block pl-3 border-l border-white/20">
               <p className="text-white font-extrabold text-base tracking-wide">
-                AICTE × VITC IDEA LAB
+                VIT- AICTE IDEA LAB
               </p>
               <p className="text-xs text-slate-300">
-                Scheme for Transformative Hands-on Engineering Education
+                Innovation &amp; Research Hub • VIT Chennai Campus
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/5 border border-white/10">
-              <Award className="w-3.5 h-3.5 text-sky-400" />
-              <span>Sanction Ref: 1-931/AICTE/IDEA/2022</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-white/5 border border-white/10">
-              <Shield className="w-3.5 h-3.5 text-emerald-400" />
-              <span>NAAC A++ Accredited Institution</span>
-            </span>
+          <div>
+            <a
+              href="https://forms.gle/AGdph5794pXzrbbz8"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-[#002147] font-bold text-xs sm:text-sm transition-all"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Submit Your Ideas</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
@@ -68,179 +82,124 @@ export default function Footer() {
           {/* Col 1: About Initiative */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">
-              About the IDEA Lab
+              About Innovation Hub
             </h4>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              The AICTE-sanctioned IDEA (Idea Development, Evaluation & Application) Lab at VIT Chennai is a ₹1.10 Crore+ multidisciplinary prototyping facility nurturing STEM conceptualization, 3D printing, advanced CNC fabrication, and IoT edge intelligence.
+              Empowering the next generation of innovators by providing access to world-class research facilities, prototyping infrastructure, and expert mentorship at VIT Chennai.
             </p>
-            <div className="pt-2 text-xs text-slate-400 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-sky-400 shrink-0" />
-              <span>Operating Hours: 08:30 – 20:00 (Mon–Sat)</span>
+            <div className="pt-2 text-xs text-slate-300 flex items-center gap-2">
+              <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Mon–Sat: 08:30 AM – 08:00 PM</span>
             </div>
           </div>
 
-          {/* Col 2: Institutional Portals */}
+          {/* Col 2: Quick Links */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Institutional Portals
+              Quick Links
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
-              <li>
-                <a
-                  href="https://chennai.vit.ac.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-                >
-                  <span>VIT Chennai Official Portal</span>
-                  <ExternalLink className="w-3 h-3 text-sky-400" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://vit.ac.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-                >
-                  <span>VIT Vellore Main Campus</span>
-                  <ExternalLink className="w-3 h-3 text-sky-400" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://vtop.vit.ac.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-                >
-                  <span>VTOP Student & Faculty Login</span>
-                  <ExternalLink className="w-3 h-3 text-sky-400" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://idealab.aicte-india.org"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-                >
-                  <span>AICTE IDEA Lab Mission Portal</span>
-                  <ExternalLink className="w-3 h-3 text-sky-400" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://chennai.vit.ac.in/research/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-                >
-                  <span>Deanery of Sponsored Research (VITC)</span>
-                  <ExternalLink className="w-3 h-3 text-sky-400" />
-                </a>
-              </li>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-white hover:underline transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 3: Navigation & Safety */}
+          {/* Col 3: Explore */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Lab Navigation & SOP
+              Explore
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300">
-              <li>
-                <a href="#overview" className="hover:text-white transition-colors">
-                  Overview & Grant Mandate
-                </a>
-              </li>
-              <li>
-                <a href="#facilities" className="hover:text-white transition-colors">
-                  Innovation Wings & Fabrication Bays
-                </a>
-              </li>
-              <li>
-                <a href="#equipment" className="hover:text-white transition-colors">
-                  Machinery Inventory & Tech Specs
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="hover:text-white transition-colors">
-                  Student Prototypes & Patents
-                </a>
-              </li>
-              <li>
-                <a href="#mentorship" className="hover:text-white transition-colors">
-                  Academic Mentors & Office Hours
-                </a>
-              </li>
-              <li>
-                <a href="#safety" className="hover:text-white transition-colors">
-                  Laboratory Safety Rules & PPE
-                </a>
-              </li>
+              {exploreLinks.map((link) => (
+                <li key={link.name}>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+                    >
+                      <span>{link.name}</span>
+                      <ExternalLink className="w-3 h-3 text-sky-400" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 4: Campus Address & Contact */}
+          {/* Col 4: Contact */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Campus Location
+              Contact
             </h4>
-            <div className="space-y-3.5 text-xs sm:text-sm text-slate-300">
-              <div className="flex items-start gap-2.5">
+            <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
+              <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">
-                  Academic Block 2, Ground Floor,
-                  <br />
-                  VIT Chennai Campus,
-                  <br />
-                  Vandalur-Kelambakkam Road,
-                  <br />
-                  Chennai – 600 127, Tamil Nadu, India.
+                <span className="leading-snug">
+                  Academic Block 2, Ground Floor, VIT Chennai Campus, Vandalur-Kelambakkam Road, Chennai – 600127.
                 </span>
-              </div>
-
-              <div className="flex items-center gap-2.5 pt-1">
-                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
-                <a href="mailto:idealab@vit.ac.in" className="hover:text-white transition-colors">
-                  idealab@vit.ac.in
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2.5">
+              </li>
+              <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-sky-400 shrink-0" />
-                <span>+91 44 3993 1555 / Ext. 2108</span>
-              </div>
-            </div>
+                <a href="tel:+914439931196" className="hover:text-white">
+                  +91 44 3993 1196
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href="tel:+914439931387" className="hover:text-white">
+                  +91 44 3993 1387
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href="mailto:sakthivel.g@vit.ac.in" className="hover:text-white">
+                  sakthivel.g@vit.ac.in
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href="mailto:sivakumar.r@vit.ac.in" className="hover:text-white">
+                  sivakumar.r@vit.ac.in
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Copyright & Compliance */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} AICTE × VITC IDEA Lab • Vellore Institute of Technology Chennai. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#safety" className="hover:text-white transition-colors">
-              Safety Regulations
+        {/* Bottom Copyright & Compliance Strip */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p className="text-center md:text-left">
+            © 2026 VIT Chennai Innovation Hub. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-6">
+            <a href="https://chennai.vit.ac.in" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              Privacy Policy
             </a>
-            <span className="text-slate-600">|</span>
-            <a
-              href="https://chennai.vit.ac.in/privacy-policy/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              Institutional Privacy Policy
+            <span className="text-white/20">|</span>
+            <a href="https://chennai.vit.ac.in" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              Terms of Service
             </a>
-            <span className="text-slate-600">|</span>
-            <a
-              href="https://idealab.aicte-india.org"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              AICTE Scheme
+            <span className="text-white/20">|</span>
+            <a href="https://www.aicte-india.org" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              AICTE India
             </a>
           </div>
         </div>
@@ -249,4 +208,3 @@ export default function Footer() {
     </footer>
   );
 }
-
