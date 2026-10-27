@@ -4,15 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  Phone,
-  Mail,
-  Clock,
-  ExternalLink,
-  Sparkles,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,10 +15,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
 
       if (isHomePage) {
-        const sections = ["home", "about", "research", "facilities", "team", "contact"];
+        const sections = ["home", "about", "facilities", "research", "team", "contact"];
         const scrollPos = window.scrollY + 180;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -44,7 +36,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
 
-  // Lock body scroll when mobile drawer is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -56,25 +48,18 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Close mobile drawer on Escape key press
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [mobileMenuOpen]);
+  // Primary links before divider
+  const primaryLinks = [
+    { name: "Home", href: isHomePage ? "#home" : "/#home", id: "home" },
+    { name: "About", href: isHomePage ? "#about" : "/#about", id: "about" },
+    { name: "Facilities", href: isHomePage ? "#facilities" : "/#facilities", id: "facilities" },
+    { name: "Contact", href: isHomePage ? "#contact" : "/#contact", id: "contact" },
+  ];
 
-  const navLinks = [
-    { name: "Home", href: isHomePage ? "#home" : "/#home", id: "home", isPage: false },
-    { name: "About", href: isHomePage ? "#about" : "/#about", id: "about", isPage: false },
-    { name: "Facilities", href: isHomePage ? "#facilities" : "/#facilities", id: "facilities", isPage: false },
-    { name: "Research", href: isHomePage ? "#research" : "/#research", id: "research", isPage: false },
-    { name: "Gallery", href: "/gallery", id: "gallery", isPage: true },
-    { name: "Events", href: "/events", id: "events", isPage: true },
-    { name: "Contact", href: isHomePage ? "#contact" : "/#contact", id: "contact", isPage: false },
+  // Secondary links after divider
+  const secondaryLinks = [
+    { name: "Gallery", href: "/gallery", id: "gallery" },
+    { name: "Events", href: "/events", id: "events" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -91,180 +76,126 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* 1. Top Institutional Utility Bar (VIT Official Navy #002147) */}
-      <div className="bg-[#002147] text-white text-[11px] sm:text-[12px] border-b border-[#003B71]/40 hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-9">
-            {/* Left Institutional Links */}
-            <div className="flex items-center space-x-4 text-slate-300">
-              <a
-                href="https://chennai.vit.ac.in/"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors flex items-center gap-1 font-medium"
-              >
-                <span>VIT Chennai Portal</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
-              </a>
-              <span className="text-white/20 select-none">|</span>
-              <a
-                href="https://vit.ac.in/"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors flex items-center gap-1 font-medium"
-              >
-                <span>VIT Vellore</span>
-              </a>
-              <span className="text-white/20 select-none">|</span>
-              <a
-                href="https://vtopcc.vit.ac.in/vtop/open/page"
-                target="_blank"
-                rel="noreferrer"
-                className="text-amber-300 hover:text-amber-200 font-semibold transition-colors flex items-center gap-1"
-              >
-                <span>VTOP Login</span>
-                <ExternalLink className="w-3 h-3 text-amber-300/80" />
-              </a>
-              <span className="text-white/20 select-none">|</span>
-              <a
-                href="https://www.aicte-india.org/"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors font-medium"
-              >
-                AICTE Official
-              </a>
-            </div>
-
-            {/* Right Contact Details & Operating Hours */}
-            <div className="flex items-center space-x-4 text-slate-300">
-              <span className="flex items-center gap-1.5 text-slate-300">
-                <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span>Mon–Sat: 8:30 AM – 8:00 PM</span>
-              </span>
-              <span className="text-white/20 select-none">|</span>
-              <a
-                href="tel:+914439931196"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
-                aria-label="Call VIT Chennai Coordinator"
-              >
-                <Phone className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>+91 44 3993 1196</span>
-              </a>
-              <span className="text-white/20 select-none">|</span>
-              <a
-                href="mailto:sakthivel.g@vit.ac.in"
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
-                aria-label="Email VIT Chennai Coordinator"
-              >
-                <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                <span>sakthivel.g@vit.ac.in</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Main Institutional Navigation Header */}
       <div
-        className={`transition-all duration-200 ${
+        className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
-            : "bg-white border-b border-slate-200"
+            ? "bg-[#050b14]/90 backdrop-blur-md border-b border-white/10 shadow-lg py-3"
+            : "bg-[#050b14]/75 backdrop-blur-sm border-b border-white/10 py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             
-            {/* Left: Brand Identity */}
+            {/* Left: IDEA Lab Logo & Brand Title */}
             <Link
               href="/"
-              className="flex items-center gap-3 sm:gap-3.5 group select-none shrink-0"
-              aria-label="AICTE and VIT Chennai IDEA Lab Home"
+              className="flex items-center gap-3 group shrink-0 select-none"
+              aria-label="VIT- AICTE IDEA LAB Home"
             >
-              <div className="flex items-center gap-2 sm:gap-3">
+              <div className="relative h-12 w-8 sm:h-14 sm:w-9 shrink-0">
                 <Image
-                  src="/logos/aicte-logo.png"
-                  alt="AICTE Official Insignia"
-                  width={52}
-                  height={52}
-                  className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 object-contain shrink-0 drop-shadow-xs"
-                  priority
-                />
-                <Image
-                  src="/logos/vit-chennai-logo.jpg"
-                  alt="VIT Chennai University Emblem"
-                  width={130}
-                  height={52}
-                  className="h-10 sm:h-11 lg:h-12 w-auto object-contain shrink-0 mix-blend-multiply drop-shadow-xs"
+                  src="/source_assets/1-2VLvQWmc.png"
+                  alt="AICTE IDEA Lab Insignia"
+                  fill
+                  sizes="40px"
+                  className="object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
                   priority
                 />
               </div>
 
-              <div className="h-9 w-[1.5px] bg-slate-200 hidden sm:block mx-0.5" />
-
-              <div className="flex flex-col justify-center">
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#003B71]">
-                    VIT- AICTE IDEA LAB
-                  </span>
-                </div>
-                <span className="text-[10.5px] text-slate-500 hidden xl:block font-normal tracking-tight">
-                  Innovation &amp; Research Hub • VIT Chennai Campus
-                </span>
-              </div>
+              <span className="font-extrabold text-base sm:text-lg lg:text-xl tracking-tight text-white whitespace-nowrap font-sans">
+                VIT- AICTE IDEA LAB
+              </span>
             </Link>
 
-            {/* Center-Right: Desktop Primary Navigation */}
+            {/* Center: Clean Navigation Links with Divider */}
             <nav
-              className="hidden lg:flex items-center gap-1 xl:gap-2"
-              aria-label="Primary Navigation"
+              className="hidden lg:flex items-center gap-7 xl:gap-9 text-[14.5px]"
+              aria-label="Main Navigation"
             >
-              {navLinks.map((link) => {
-                const isActive = link.isPage
-                  ? pathname === link.href
-                  : isHomePage && activeSection === link.id;
-
+              {/* Primary Links */}
+              {primaryLinks.map((link) => {
+                const isActive = isHomePage && activeSection === link.id;
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`relative text-[13.5px] font-semibold whitespace-nowrap px-3 py-2 rounded-md transition-colors ${
+                    className={`relative py-1.5 transition-colors whitespace-nowrap ${
                       isActive
-                        ? "text-[#003B71]"
-                        : "text-slate-700 hover:text-[#003B71] hover:bg-slate-50"
+                        ? "text-cyan-400 font-semibold"
+                        : "text-white/90 hover:text-cyan-300 font-medium"
                     }`}
                   >
                     <span>{link.name}</span>
                     {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-[#003B71] rounded-full transition-all" />
+                      <span className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" />
+                    )}
+                  </Link>
+                );
+              })}
+
+              {/* Vertical Divider */}
+              <span className="text-white/30 font-light select-none text-base">|</span>
+
+              {/* Secondary Links */}
+              {secondaryLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`relative py-1.5 transition-colors whitespace-nowrap ${
+                      isActive
+                        ? "text-cyan-400 font-semibold"
+                        : "text-white/90 hover:text-cyan-300 font-medium"
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && (
+                      <span className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" />
                     )}
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Right: Submit Ideas CTA Button & Mobile Menu Toggle */}
-            <div className="flex items-center gap-3 shrink-0">
-              <a
-                href="https://forms.gle/AGdph5794pXzrbbz8"
-                target="_blank"
-                rel="noreferrer"
-                className="hidden sm:inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-[13px] font-bold text-white bg-[#003B71] hover:bg-[#002147] active:scale-95 transition-all shadow-xs border border-transparent hover:border-[#002147] whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#003B71] focus:ring-offset-2"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Submit Your Ideas</span>
-              </a>
+            {/* Right: AICTE & VIT Chennai Partner Logos */}
+            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+              <div className="hidden sm:flex items-center gap-3">
+                {/* AICTE Gear Emblem */}
+                <div className="relative h-11 w-11 lg:h-12 lg:w-12 shrink-0">
+                  <Image
+                    src="/source_assets/2-ClQqbaG7.png"
+                    alt="AICTE Insignia"
+                    fill
+                    sizes="48px"
+                    className="object-contain drop-shadow-sm"
+                    priority
+                  />
+                </div>
 
-              {/* Mobile Menu Toggle Button */}
+                {/* VIT Chennai University Logo in White Card */}
+                <div className="bg-white px-2.5 py-1 rounded-md border border-white/20 shadow-sm flex items-center h-10 lg:h-11">
+                  <Image
+                    src="/logos/vit-chennai-logo.jpg"
+                    alt="VIT Chennai Emblem"
+                    width={110}
+                    height={34}
+                    className="h-8 lg:h-9 w-auto object-contain mix-blend-multiply"
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Mobile Menu Hamburger Button */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-[#003B71] hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#003B71] transition-colors"
+                className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-cyan-300 hover:bg-white/10 transition-colors focus:outline-none"
                 aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-navigation-drawer"
-                aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -274,43 +205,37 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 3. Mobile Navigation Drawer & Overlay */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div
-          id="mobile-navigation-drawer"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile Navigation"
-          className="lg:hidden fixed inset-x-0 top-[80px] md:top-[116px] bottom-0 bg-black/50 backdrop-blur-xs z-50 flex flex-col justify-start"
+          className="lg:hidden fixed inset-x-0 top-[76px] bottom-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col justify-start"
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="bg-white border-b border-slate-200 px-5 pt-4 pb-6 space-y-1 shadow-xl max-h-[calc(100vh-100px)] overflow-y-auto"
+            className="bg-[#050b14]/95 border-b border-white/10 px-5 pt-4 pb-6 space-y-2 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                Menu Navigation
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10">
+              <span className="text-xs font-bold text-white/50 uppercase tracking-wider">
+                Navigation
               </span>
-              <span className="text-[11px] font-semibold text-[#003B71]">
+              <span className="text-xs font-bold text-cyan-400">
                 VIT- AICTE IDEA LAB
               </span>
             </div>
 
-            {navLinks.map((link) => {
-              const isActive = link.isPage
-                ? pathname === link.href
-                : isHomePage && activeSection === link.id;
-
+            {/* Primary Links */}
+            {primaryLinks.map((link) => {
+              const isActive = isHomePage && activeSection === link.id;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`flex items-center justify-between text-sm font-semibold px-3 py-2.5 rounded-md transition-colors ${
+                  className={`flex items-center justify-between text-sm font-semibold px-3 py-2.5 rounded-lg transition-colors ${
                     isActive
-                      ? "bg-blue-50 text-[#003B71]"
-                      : "text-slate-800 hover:text-[#003B71] hover:bg-slate-50"
+                      ? "bg-cyan-500/15 text-cyan-400"
+                      : "text-white/80 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   <span>{link.name}</span>
@@ -318,16 +243,46 @@ export default function Navbar() {
               );
             })}
 
-            <div className="pt-4 border-t border-slate-100">
-              <a
-                href="https://forms.gle/AGdph5794pXzrbbz8"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-md font-bold text-sm text-white bg-[#003B71] hover:bg-[#002147] transition-colors shadow-sm"
-              >
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>Submit Your Ideas</span>
-              </a>
+            <div className="my-2 border-t border-white/10" />
+
+            {/* Secondary Links */}
+            {secondaryLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`flex items-center justify-between text-sm font-semibold px-3 py-2.5 rounded-lg transition-colors ${
+                    isActive
+                      ? "bg-cyan-500/15 text-cyan-400"
+                      : "text-white/80 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
+
+            {/* Mobile Partner Logos */}
+            <div className="pt-4 mt-2 border-t border-white/10 flex items-center justify-center gap-4">
+              <div className="relative h-10 w-10 shrink-0">
+                <Image
+                  src="/source_assets/2-ClQqbaG7.png"
+                  alt="AICTE Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="bg-white px-2.5 py-1 rounded-md border border-white/20 flex items-center h-9">
+                <Image
+                  src="/logos/vit-chennai-logo.jpg"
+                  alt="VIT Chennai Logo"
+                  width={90}
+                  height={28}
+                  className="h-7 w-auto object-contain mix-blend-multiply"
+                />
+              </div>
             </div>
           </div>
         </div>
