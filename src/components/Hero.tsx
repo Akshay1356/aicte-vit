@@ -7,10 +7,34 @@ import HeroBannerCarousel from "./HeroBannerCarousel";
 
 export default function Hero() {
   const stats = [
-    { label: "Specialized Lab Wings", value: "4 Wings", icon: Layers, detail: "Prototyping, Manufacturing, Electronics & PCB" },
-    { label: "Core Innovation Pillars", value: "3 Pillars", icon: Award, detail: "R&D, Collaborative Learning, Innovation Hub" },
-    { label: "Multidisciplinary Faculty", value: "Tech-Gurus", icon: Users, detail: "Mentorship from SMEC, SCOPE, SELECT" },
-    { label: "Central Infrastructure", value: "AICTE Sanctioned", icon: Cpu, detail: "Academic Block 2, Ground Floor" },
+    {
+      metric: "04",
+      unit: "Wings",
+      title: "Specialized Lab Wings",
+      detail: "Prototyping, Manufacturing, Electronics & PCB",
+      icon: Layers,
+    },
+    {
+      metric: "03",
+      unit: "Pillars",
+      title: "Core Ecosystem Pillars",
+      detail: "R&D, Collaborative Learning, Innovation Hub",
+      icon: Award,
+    },
+    {
+      metric: "09+",
+      unit: "Tech-Gurus",
+      title: "Multidisciplinary Faculty",
+      detail: "Senior mentors across SMEC, SCOPE, SELECT",
+      icon: Users,
+    },
+    {
+      metric: "Central",
+      unit: "Facility",
+      title: "AICTE Sanctioned Hub",
+      detail: "Academic Block 2, Ground Floor",
+      icon: Cpu,
+    },
   ];
 
   return (
@@ -224,32 +248,44 @@ export default function Hero() {
 
         </div>
 
-        {/* Verified Stats Strip */}
-        <div className="mt-14 pt-10 border-t border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {stats.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className="p-5 rounded-lg bg-[#f8fafc] border border-slate-200 hover:border-slate-300 transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded bg-blue-100 text-[#003b71] flex items-center justify-center font-bold">
-                    <Icon className="w-4 h-4" />
+        {/* Institutional Metrics Banner */}
+        <div className="mt-14 pt-10 border-t border-slate-200">
+          <div className="rounded-2xl border border-slate-200/90 bg-white shadow-xs overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+              {stats.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/60 transition-colors group"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl sm:text-4xl font-extrabold text-[#002147] tracking-tight font-sans">
+                          {item.metric}
+                        </span>
+                        <span className="text-xs sm:text-sm font-bold text-[#003B71] uppercase tracking-wider">
+                          {item.unit}
+                        </span>
+                      </div>
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#003B71] flex items-center justify-center group-hover:bg-[#003B71] group-hover:text-white transition-colors shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-800 leading-snug">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                        {item.detail}
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#002147] tracking-tight">
-                    {item.value}
-                  </div>
-                </div>
-                <div className="text-xs sm:text-sm font-bold text-slate-800">
-                  {item.label}
-                </div>
-                <div className="text-[11px] text-slate-500 mt-0.5">
-                  {item.detail}
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
 
       </div>
