@@ -2,19 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
-import { Users, GraduationCap, Award } from "lucide-react";
 
 export default function LeadershipSection() {
-  const leadership = [
+  const chiefMentors = [
     {
-      role: "Chief Mentor",
+      title: "Chief Mentor",
       name: "Dr. Kanchana Bhaaskaran VS",
       designation: "Vice Chancellor",
       institution: "VIT Chennai",
       image: "/source_assets/a-BxalDSft.png",
     },
     {
-      role: "Co-Chief Mentor",
+      title: "Co-Chief Mentor",
       name: "Dr. Thyagarajan T",
       designation: "Pro Vice Chancellor",
       institution: "VIT Chennai",
@@ -24,22 +23,20 @@ export default function LeadershipSection() {
 
   const coordinators = [
     {
-      role: "Coordinator",
+      title: "Coordinator",
       name: "Dr. Sivakumar R",
-      designation: "Professor",
-      department: "School of Mechanical Engineering (SMEC)",
-      image: "/source_assets/c-8a50upZS.png",
+      designation: "Professor / SMEC",
       email: "sivakumar.r@vit.ac.in",
       phone: "+91 44 3993 1387",
+      image: "/source_assets/c-8a50upZS.png",
     },
     {
-      role: "Co-Coordinator",
+      title: "Co-Coordinator",
       name: "Dr. Sakthivel G",
-      designation: "Professor",
-      department: "School of Mechanical Engineering (SMEC)",
-      image: "/source_assets/d-BE2s_ikA.png",
+      designation: "Professor / SMEC",
       email: "sakthivel.g@vit.ac.in",
       phone: "+91 44 3993 1196",
+      image: "/source_assets/d-BE2s_ikA.png",
     },
   ];
 
@@ -47,31 +44,26 @@ export default function LeadershipSection() {
     {
       name: "Dr. Raghukiran N",
       school: "SMEC",
-      department: "Mechanical Engineering",
       image: "/source_assets/e-hHJfDbk9.png",
     },
     {
       name: "Dr. Moganapriya C",
       school: "SMEC",
-      department: "Mechanical Engineering",
       image: "/source_assets/f-BOhkmTzJ.png",
     },
     {
       name: "Dr. Abdul Quadir",
       school: "SCOPE",
-      department: "Computer Science & Engineering",
       image: "/source_assets/g-BBsKIsYD.png",
     },
     {
       name: "Dr. Abirami S",
       school: "SCOPE",
-      department: "Computer Science & Engineering",
       image: "/source_assets/h-CWHm3gNK.png",
     },
     {
       name: "Dr. Swetha R Kumar",
       school: "SELECT",
-      department: "Electrical & Electronics Engineering",
       image: "/source_assets/i-DkRb-9m5.png",
     },
   ];
@@ -95,90 +87,76 @@ export default function LeadershipSection() {
         </div>
 
         {/* 1. Chief Mentors Tier */}
-        <div className="mb-14">
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <Award className="w-4 h-4 text-amber-500" />
-            <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-500">
-              Institutional Mentorship
-            </h3>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
-            {leadership.map((person) => (
-              <div
-                key={person.name}
-                className="flex-1 p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-xs flex flex-col items-center text-center group hover:border-[#003B71]/40 transition-all"
-              >
-                <div className="relative w-36 h-36 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 bg-slate-200">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    fill
-                    className="object-cover object-top"
-                  />
+        <div className="mb-16">
+          <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-10 max-w-3xl mx-auto">
+            {chiefMentors.map((mentor) => (
+              <div key={mentor.name} className="flex-1 flex flex-col items-center">
+                <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#002147] mb-4 text-center">
+                  {mentor.title}
+                </h3>
+                <div className="w-full max-w-[320px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center">
+                  {/* Large, High-Clarity Portrait Photo */}
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
+                    <Image
+                      src={mentor.image}
+                      alt={mentor.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover object-[center_20%]"
+                      quality={95}
+                      priority
+                    />
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-[#002147] leading-snug">
+                    {mentor.name}
+                  </h4>
+                  <p className="text-sm font-semibold text-slate-600 mt-1">
+                    {mentor.designation}
+                  </p>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    {mentor.institution}
+                  </p>
                 </div>
-                <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-100 text-[#003B71] mb-2">
-                  {person.role}
-                </span>
-                <h4 className="text-lg font-bold text-[#002147]">
-                  {person.name}
-                </h4>
-                <p className="text-sm font-semibold text-slate-600">
-                  {person.designation}
-                </p>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  {person.institution}
-                </p>
               </div>
             ))}
           </div>
         </div>
 
         {/* 2. Coordinators Tier */}
-        <div className="mb-16">
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <GraduationCap className="w-4 h-4 text-[#003B71]" />
-            <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-500">
-              Lab Coordinators
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="mb-20">
+          <div className="flex flex-col sm:flex-row justify-center gap-8 sm:gap-10 max-w-3xl mx-auto">
             {coordinators.map((coord) => (
-              <div
-                key={coord.name}
-                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center gap-5 group hover:border-[#003B71]/40 transition-all"
-              >
-                <div className="relative w-28 h-28 rounded-xl overflow-hidden border-2 border-slate-100 shadow-sm shrink-0 bg-slate-100">
-                  <Image
-                    src={coord.image}
-                    alt={coord.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-                <div className="text-center sm:text-left space-y-1 min-w-0">
-                  <span className="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200/60">
-                    {coord.role}
-                  </span>
-                  <h4 className="text-lg font-bold text-[#002147] truncate">
+              <div key={coord.name} className="flex-1 flex flex-col items-center">
+                <h3 className="font-sans text-xl sm:text-2xl font-bold text-[#002147] mb-4 text-center">
+                  {coord.title}
+                </h3>
+                <div className="w-full max-w-[320px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center">
+                  {/* Large, High-Clarity Portrait Photo */}
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
+                    <Image
+                      src={coord.image}
+                      alt={coord.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover object-[center_20%]"
+                      quality={95}
+                    />
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold text-[#002147] leading-snug">
                     {coord.name}
                   </h4>
-                  <p className="text-xs font-semibold text-slate-700">
+                  <p className="text-sm font-semibold text-slate-600 mt-1">
                     {coord.designation}
                   </p>
-                  <p className="text-[11px] text-slate-500">
-                    {coord.department}
-                  </p>
-                  <div className="pt-2 text-xs text-slate-600 flex flex-col gap-0.5">
+                  <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col items-center text-xs text-slate-500">
                     <a
                       href={`mailto:${coord.email}`}
-                      className="text-[#003B71] hover:underline font-medium truncate"
+                      className="text-[#003B71] hover:underline font-medium"
                     >
                       {coord.email}
                     </a>
-                    <span className="text-slate-500 text-[11px]">
-                      Ph: {coord.phone}
+                    <span className="text-[11px] text-slate-400 mt-0.5">
+                      {coord.phone}
                     </span>
                   </div>
                 </div>
@@ -189,38 +167,68 @@ export default function LeadershipSection() {
 
         {/* 3. Faculty (Tech-Gurus) Tier */}
         <div>
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <Users className="w-4 h-4 text-emerald-600" />
-            <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-500">
-              Faculty Tech-Gurus
+          <div className="text-center mb-8">
+            <h3 className="font-sans text-2xl sm:text-3xl font-bold text-[#002147]">
+              Faculty (Tech-Gurus)
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {techGurus.map((guru) => (
-              <div
-                key={guru.name}
-                className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center flex flex-col items-center group hover:bg-white hover:border-[#003B71]/40 transition-all"
-              >
-                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-xs mb-3 bg-slate-200">
-                  <Image
-                    src={guru.image}
-                    alt={guru.name}
-                    fill
-                    className="object-cover object-top"
-                  />
+          <div className="max-w-5xl mx-auto">
+            {/* Top row: 3 faculty */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center mb-6 sm:mb-8">
+              {techGurus.slice(0, 3).map((guru) => (
+                <div
+                  key={guru.name}
+                  className="w-full max-w-[300px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center"
+                >
+                  {/* Large, High-Clarity Portrait Photo */}
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
+                    <Image
+                      src={guru.image}
+                      alt={guru.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 300px"
+                      className="object-cover object-[center_20%]"
+                      quality={95}
+                    />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#002147] leading-snug">
+                    {guru.name}
+                  </h4>
+                  <p className="text-sm font-semibold text-[#003B71] mt-1.5 uppercase tracking-wider">
+                    {guru.school}
+                  </p>
                 </div>
-                <h5 className="text-xs sm:text-sm font-bold text-[#002147] leading-snug">
-                  {guru.name}
-                </h5>
-                <span className="mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-[#003B71]">
-                  {guru.school}
-                </span>
-                <p className="text-[10px] text-slate-500 mt-1 line-clamp-2">
-                  {guru.department}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Bottom row: 2 faculty centered */}
+            <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 items-center">
+              {techGurus.slice(3, 5).map((guru) => (
+                <div
+                  key={guru.name}
+                  className="w-full max-w-[300px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center"
+                >
+                  {/* Large, High-Clarity Portrait Photo */}
+                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
+                    <Image
+                      src={guru.image}
+                      alt={guru.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 300px"
+                      className="object-cover object-[center_20%]"
+                      quality={95}
+                    />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#002147] leading-snug">
+                    {guru.name}
+                  </h4>
+                  <p className="text-sm font-semibold text-[#003B71] mt-1.5 uppercase tracking-wider">
+                    {guru.school}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
