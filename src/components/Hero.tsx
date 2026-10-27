@@ -2,41 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Sparkles, Layers, Cpu, Award, Users, CheckCircle2, MapPin, Clock } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle2, MapPin, Clock } from "lucide-react";
 import HeroBannerCarousel from "./HeroBannerCarousel";
+import StatsCounter from "./StatsCounter";
 
 export default function Hero() {
-  const stats = [
-    {
-      metric: "04",
-      unit: "Wings",
-      title: "Specialized Lab Wings",
-      detail: "Prototyping, Manufacturing, Electronics & PCB",
-      icon: Layers,
-    },
-    {
-      metric: "03",
-      unit: "Pillars",
-      title: "Core Ecosystem Pillars",
-      detail: "R&D, Collaborative Learning, Innovation Hub",
-      icon: Award,
-    },
-    {
-      metric: "09+",
-      unit: "Tech-Gurus",
-      title: "Multidisciplinary Faculty",
-      detail: "Senior mentors across SMEC, SCOPE, SELECT",
-      icon: Users,
-    },
-    {
-      metric: "Central",
-      unit: "Facility",
-      title: "AICTE Sanctioned Hub",
-      detail: "Academic Block 2, Ground Floor",
-      icon: Cpu,
-    },
-  ];
-
   return (
     <section id="home" className="relative pt-0 pb-16 sm:pb-20 bg-white border-b border-slate-200">
       
@@ -248,45 +218,8 @@ export default function Hero() {
 
         </div>
 
-        {/* Institutional Metrics Banner */}
-        <div className="mt-14 pt-10 border-t border-slate-200">
-          <div className="rounded-2xl border border-slate-200/90 bg-white shadow-xs overflow-hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-              {stats.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="p-6 sm:p-7 flex flex-col justify-between hover:bg-slate-50/60 transition-colors group"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl sm:text-4xl font-extrabold text-[#002147] tracking-tight font-sans">
-                          {item.metric}
-                        </span>
-                        <span className="text-xs sm:text-sm font-bold text-[#003B71] uppercase tracking-wider">
-                          {item.unit}
-                        </span>
-                      </div>
-                      <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#003B71] flex items-center justify-center group-hover:bg-[#003B71] group-hover:text-white transition-colors shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-800 leading-snug">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                        {item.detail}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        {/* Animated Institutional Metrics Counter Strip matching source reference */}
+        <StatsCounter />
 
       </div>
     </section>
