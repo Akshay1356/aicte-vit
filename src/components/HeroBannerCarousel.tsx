@@ -127,8 +127,11 @@ export default function HeroBannerCarousel() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Full screen viewport height (accounting for fixed header) */}
-      <div className="relative w-full h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[calc(100vh-125px)] min-h-[360px] max-h-[820px] bg-[#051336] overflow-hidden">
+      {/* Full screen viewport height (starting from top:0 under the transparent navbar) */}
+      <div className="relative w-full h-[65vh] sm:h-[75vh] md:h-[85vh] lg:h-screen min-h-[460px] max-h-[920px] bg-[#051336] overflow-hidden">
+        {/* Top subtle vignette so the transparent floating navbar stays readable on all slides */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none z-10" />
+
         {slides.map((slide, index) => {
           const isActive = index === currentIndex;
           return (

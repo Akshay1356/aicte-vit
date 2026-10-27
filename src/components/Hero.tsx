@@ -14,9 +14,9 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" className="relative pt-24 sm:pt-28 pb-16 sm:pb-20 bg-white border-b border-slate-200">
+    <section id="home" className="relative pt-0 pb-16 sm:pb-20 bg-white border-b border-slate-200">
       
-      {/* Edge-to-Edge Full-Screen Hero Banner Carousel */}
+      {/* Edge-to-Edge Full-Screen Hero Banner Carousel starting flush at top */}
       <div className="w-full mb-12 sm:mb-16">
         <HeroBannerCarousel />
       </div>
