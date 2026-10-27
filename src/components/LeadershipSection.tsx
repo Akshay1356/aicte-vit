@@ -82,11 +82,6 @@ export default function LeadershipSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#003B71] text-xs font-bold tracking-wide">
-            <Users className="w-3.5 h-3.5" />
-            <span>Our Team</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002147] tracking-tight leading-tight">
             Leadership &amp;{" "}
             <span className="text-[#003B71] underline decoration-amber-400 decoration-4 underline-offset-4">

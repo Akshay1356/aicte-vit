@@ -15,10 +15,6 @@ export default function AboutSection() {
         {/* Top Header & Visual */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 mb-16">
           <div className="w-full lg:w-1/2 space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 text-[#003B71] text-xs font-bold tracking-wide">
-              <span>About Us</span>
-            </div>
-
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002147] tracking-tight leading-tight">
               Empowering the Next Generation of{" "}
               <span className="text-[#003B71] underline decoration-amber-400 decoration-4 underline-offset-4">

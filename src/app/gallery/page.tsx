@@ -70,10 +70,6 @@ export default function GalleryPage() {
               <Camera className="w-8 h-8" />
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-[#003B71] text-xs font-bold tracking-wide">
-              <span>Visual Showcase</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl font-extrabold text-[#002147] tracking-tight">
               IDEA Lab{" "}
               <span className="text-[#003B71] underline decoration-amber-400 decoration-4 underline-offset-4">

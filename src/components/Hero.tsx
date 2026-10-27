@@ -29,12 +29,6 @@ export default function Hero() {
           {/* Left Hero Narrative: ~46% width on desktop */}
           <div className="w-full lg:w-[46%] space-y-6">
             
-            {/* Eyebrow Badge from source */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-[#003B71] text-xs font-bold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-              <span>VIT CHENNAI&apos;S LEADING INNOVATION HUB</span>
-            </div>
-
             {/* Headline matching source */}
             <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-[#002147] tracking-tight leading-[1.15]">
               Where Ideas{" "}

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Check, X, ArrowUpRight, Cpu } from "lucide-react";
+import { Check, X, ArrowUpRight } from "lucide-react";
 
 interface Facility {
   id: number;
@@ -57,11 +57,6 @@ export default function FacilitiesSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 text-[#003B71] text-xs font-bold tracking-wide">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>Our Facilities</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#002147] tracking-tight leading-tight">
             World-Class{" "}
             <span className="text-[#003B71] underline decoration-amber-400 decoration-4 underline-offset-4">
