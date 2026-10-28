@@ -57,11 +57,6 @@ export default function LeadershipSection() {
       image: "/source_assets/g-BBsKIsYD.png",
     },
     {
-      name: "Dr. Abirami S",
-      school: "SCOPE",
-      image: "/source_assets/h-CWHm3gNK.png",
-    },
-    {
       name: "Dr. Swetha R Kumar",
       school: "SELECT",
       image: "/source_assets/i-DkRb-9m5.png",
@@ -166,20 +161,20 @@ export default function LeadershipSection() {
         </div>
 
         {/* 3. Faculty (Tech-Gurus) Tier */}
-        <div>
+        <div id="tech-gurus" className="scroll-mt-28 relative">
+          <span id="professors" className="absolute -top-28" />
           <div className="text-center mb-8">
             <h3 className="font-sans text-2xl sm:text-3xl font-bold text-[#002147]">
               Faculty (Tech-Gurus)
             </h3>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            {/* Top row: 3 faculty */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center mb-6 sm:mb-8">
-              {techGurus.slice(0, 3).map((guru) => (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+              {techGurus.map((guru) => (
                 <div
                   key={guru.name}
-                  className="w-full max-w-[300px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center"
+                  className="w-full max-w-[280px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center"
                 >
                   {/* Large, High-Clarity Portrait Photo */}
                   <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
@@ -187,35 +182,7 @@ export default function LeadershipSection() {
                       src={guru.image}
                       alt={guru.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, 300px"
-                      className="object-cover object-[center_20%]"
-                      quality={95}
-                    />
-                  </div>
-                  <h4 className="text-lg font-bold text-[#002147] leading-snug">
-                    {guru.name}
-                  </h4>
-                  <p className="text-sm font-semibold text-[#003B71] mt-1.5 uppercase tracking-wider">
-                    {guru.school}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom row: 2 faculty centered */}
-            <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 items-center">
-              {techGurus.slice(3, 5).map((guru) => (
-                <div
-                  key={guru.name}
-                  className="w-full max-w-[300px] rounded-2xl bg-white border border-slate-200 p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-[#003B71]/40 transition-all flex flex-col items-center text-center"
-                >
-                  {/* Large, High-Clarity Portrait Photo */}
-                  <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-slate-200/90 shadow-xs bg-slate-50 mb-5">
-                    <Image
-                      src={guru.image}
-                      alt={guru.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 300px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 280px"
                       className="object-cover object-[center_20%]"
                       quality={95}
                     />

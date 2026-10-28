@@ -18,7 +18,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 15);
 
       if (isHomePage) {
-        const sections = ["home", "about", "facilities", "research", "team", "contact"];
+        const sections = ["home", "about", "facilities", "research", "team", "tech-gurus", "contact"];
         const scrollPos = window.scrollY + 180;
 
         for (let i = sections.length - 1; i >= 0; i--) {
@@ -35,6 +35,19 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
+
+  // Handle hash scrolling when landing from another route
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const targetId = window.location.hash.slice(1);
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 150);
+    }
+  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -53,6 +66,7 @@ export default function Navbar() {
     { name: "Home", href: isHomePage ? "#home" : "/#home", id: "home" },
     { name: "About", href: isHomePage ? "#about" : "/#about", id: "about" },
     { name: "Facilities", href: isHomePage ? "#facilities" : "/#facilities", id: "facilities" },
+    { name: "Tech Guru", href: isHomePage ? "#tech-gurus" : "/#tech-gurus", id: "tech-gurus" },
     { name: "Contact", href: isHomePage ? "#contact" : "/#contact", id: "contact" },
   ];
 
@@ -63,9 +77,9 @@ export default function Navbar() {
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (isHomePage && href.startsWith("#")) {
+    if (isHomePage && href.includes("#")) {
       e.preventDefault();
-      const targetId = href.slice(1);
+      const targetId = href.split("#")[1];
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -110,12 +124,15 @@ export default function Navbar() {
 
             {/* Center: Clean Navigation Links with Divider */}
             <nav
-              className="hidden lg:flex items-center gap-7 xl:gap-9 text-[14.5px]"
+              className="hidden lg:flex items-center gap-5 xl:gap-8 text-[14px] xl:text-[14.5px]"
               aria-label="Main Navigation"
             >
               {/* Primary Links */}
               {primaryLinks.map((link) => {
-                const isActive = isHomePage && activeSection === link.id;
+                const isActive =
+                  isHomePage &&
+                  (activeSection === link.id ||
+                    (link.id === "tech-gurus" && activeSection === "team"));
                 return (
                   <Link
                     key={link.name}
@@ -226,7 +243,10 @@ export default function Navbar() {
 
             {/* Primary Links */}
             {primaryLinks.map((link) => {
-              const isActive = isHomePage && activeSection === link.id;
+              const isActive =
+                isHomePage &&
+                (activeSection === link.id ||
+                  (link.id === "tech-gurus" && activeSection === "team"));
               return (
                 <Link
                   key={link.name}
